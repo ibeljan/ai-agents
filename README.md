@@ -125,17 +125,9 @@ curl -fsSL https://azure-dev.azureedge.net/azd/install.sh | bash
 az version
 azd version
 ```
-```powershell
-az version
-azd version
-```
 
 #### Login
 ```bash
-az login
-azd auth login
-```
-```powershell
 az login
 azd auth login
 ```
@@ -145,22 +137,13 @@ azd auth login
 az account set --subscription <SUB_ID>
 azd config set defaults.subscription <SUB_ID>
 ```
-```powershell
-az account set --subscription <SUB_ID>
-azd config set defaults.subscription <SUB_ID>
-```
 
 #### Optional: Install Bicep CLI (for infra-as-code)
 ```bash
 az bicep upgrade
 ```
-```powershell
-az bicep upgrade
-```
 
 ### 8. (Optional) Dev Containers Workflow
-
-### 7. (Optional) Dev Containers Workflow
 - Add `.devcontainer/devcontainer.json` for consistent environment
 - Reopen in container via Command Palette
 
