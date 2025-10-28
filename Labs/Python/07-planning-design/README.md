@@ -1,7 +1,3 @@
-[![Planning Design Pattern](./images/lesson-7-thumbnail.png)](https://youtu.be/kPfJ2BrBCMY?si=9pYpPXp0sSbK91Dr)
-
-> _(Click the image above to view video of this lesson)_
-
 # Planning Design
 
 ## Introduction
@@ -293,14 +289,3 @@ In this article we have looked at an example of how we can create a planner that
 
 AutoGen Magentic One - A Generalist multi-agent system for solving complex tasks and has achieved impressive results on multiple challenging agentic benchmarks. Reference: <a href="https://github.com/microsoft/autogen/tree/main/python/packages/autogen-magentic-one" target="_blank">autogen-magentic-one</a>. In this implementation the orchestrator create task specific plan and delegates these tasks to the available agents. In addition to planning the orchestrator also employs a tracking mechanism to monitor the progress of the task and re-plans as required.
 
-### Got More Questions about the Planning Design Pattern?
-
-Join the [Azure AI Foundry Discord](https://aka.ms/ai-agents/discord) to meet with other learners, attend office hours and get your AI Agents questions answered.
-
-## Previous Lesson
-
-[Building Trustworthy AI Agents](../06-building-trustworthy-agents/README.md)
-
-## Next Lesson
-
-[Multi-Agent Design Pattern](../08-multi-agent/README.md)

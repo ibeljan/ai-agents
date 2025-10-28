@@ -1,14 +1,7 @@
 
-[![Intro to AI Agents](./images/lesson-1-thumbnail.png)](https://youtu.be/3zgm60bXmQk?si=QA4CW2-cmul5kk3D)
-
-> _(Click the image above to view video of this lesson)_
-
-
 # Introduction to AI Agents and Agent Use Cases
 
 Welcome to the "AI Agents for Beginners" course! This course provides fundamental knowledge and applied samples for building AI Agents.
-
-Join the <a href="https://discord.gg/kzRShWzttr" target="_blank">Azure AI Discord Community</a> to meet other learners and AI Agent Builders and ask any questions you have about this course.
 
 To start this course, we begin by getting a better understanding of what AI Agents are and how we can use them in the applications and workflows we build.
 
@@ -99,18 +92,5 @@ This course is divided into some of the current popular Agentic patterns.
 
 Agentic Frameworks allow developers to implement agentic patterns through code. These frameworks offer templates, plugins, and tools for better AI Agent collaboration. These benefits provide abilities for better observability and troubleshooting of AI Agent systems.
 
-In this course, we will explore the research-driven AutoGen framework and the production-ready Agent framework from Semantic Kernel.
-
-### Got More Questions about AI Agents?
-
-Join the [Azure AI Foundry Discord](https://aka.ms/ai-agents/discord) to meet with other learners, attend office hours and get your AI Agents questions answered.
 
 
-
-## Previous Lesson
-
-[Course Setup](../00-course-setup/README.md)
-
-## Next Lesson
-
-[Exploring Agentic Frameworks](../02-explore-agentic-frameworks/README.md)

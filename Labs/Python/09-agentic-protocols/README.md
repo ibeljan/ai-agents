@@ -1,9 +1,5 @@
 # Using Agentic Protocols (MCP, A2A and NLWeb)
 
-[![Agentic Protocols](./images/lesson-11-thumbnail.png)](https://youtu.be/X-Dh9R3Opn8)
-
-> _(Click the image above to view video of this lesson)_
-
 As the use of AI agents grows, so does the need for protocols that ensure standardization, security, and support open innovation. In this lesson, we will cover 3 protocols looking to meet this need - Model Context Protocol (MCP), Agent to Agent (A2A) and Natural Language Web (NLWeb).
 
 ## Introduction
@@ -163,9 +159,6 @@ Consider our travel booking website again, but this time, it's powered by NLWeb.
 
 5. **AI Agent Interaction**: Because NLWeb serves as an MCP server, an external AI travel agent could also connect to this website's NLWeb instance. The AI agent could then use the `ask` MCP method to query the website directly: `ask("Are there any vegan-friendly restaurants in the Honolulu area recommended by the hotel?")`. The NLWeb instance would process this, leveraging its database of restaurant information (if loaded), and return a structured JSON response.
 
-### Got More Questions about MCP/A2A/NLWeb?
-
-Join the [Azure AI Foundry Discord](https://aka.ms/ai-agents/discord) to meet with other learners, attend office hours and get your AI Agents questions answered.
 
 ## Resources
 

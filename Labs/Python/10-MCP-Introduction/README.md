@@ -1,9 +1,5 @@
 # Introduction to Model Context Protocol (MCP): Why It Matters for Scalable AI Applications
 
-[![Introduction to Model Context Protocol](../images/video-thumbnails/01.png)](https://youtu.be/agBbdiOPLQA)
-
-_(Click the image above to view video of this lesson)_
-
 Generative AI applications are a great step forward as they often let the user interact with the app using natural language prompts. However, as more time and resources are invested in such apps, you want to make sure you can easily integrate functionalities and resources in such a way that it's easy to extend, that your app can cater to more than one model being used, and handle various model intricacies. In short, building Gen AI apps is easy to begin with, but as they grow and become more complex, you need to start defining an architecture and will likely need to rely on a standard to ensure your apps are built in a consistent way. This is where MCP comes in to organize things and provide a standard.
 
 ---
@@ -305,11 +301,3 @@ Think about an AI application you're interested in building.
 - Which **external tools or data** could enhance its capabilities?
 - How might MCP make integration **simpler and more reliable?**
 
-## Additional Resources
-
-- [MCP GitHub Repository](https://github.com/modelcontextprotocol)
-
-
-## What's next
-
-Next: [Chapter 1: Core Concepts](../01-CoreConcepts/README.md)

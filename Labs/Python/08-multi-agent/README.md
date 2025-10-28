@@ -1,7 +1,3 @@
-[![Multi-Agent Design](./images/lesson-8-thumbnail.png)](https://youtu.be/V6HpE9hZEx0?si=A7K44uMCqgvLQVCa)
-
-> _(Click the image above to view video of this lesson)_
-
 # Multi-agent design patterns
 
 As soon as you start working on a project that involves multiple agents, you will need to consider the multi-agent design pattern. However, it might not be immediately clear when to switch to multi-agents and what the advantages are.
@@ -180,11 +176,3 @@ Join the [Azure AI Foundry Discord](https://aka.ms/ai-agents/discord) to meet wi
 - <a href="https://microsoft.github.io/autogen/stable/user-guide/core-user-guide/design-patterns/intro.html" target="_blank">AutoGen design patterns</a>
 - <a href="https://www.analyticsvidhya.com/blog/2024/10/agentic-design-patterns/" target="_blank">Agentic design patterns</a>
 
-
-## Previous Lesson
-
-[Planning Design](../07-planning-design/README.md)
-
-## Next Lesson
-
-[Metacognition in AI Agents](../09-metacognition/README.md)
