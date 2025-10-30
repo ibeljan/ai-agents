@@ -411,3 +411,5 @@ FodyWeavers.xsd
 
 # Ignore backup files
 *-backup.ipynb
+
+chroma_db/
