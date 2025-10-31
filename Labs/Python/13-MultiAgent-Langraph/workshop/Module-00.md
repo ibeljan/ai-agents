@@ -18,7 +18,7 @@ In this Module, you'll deploy the Azure Services needed to run this workshop and
 
 1. [Activity 1: Configure Workshop Environment](#activity-1-configure-workshop-environment)
 1. [Activity 2: Deploy Azure Services](#activity-2-deploy-azure-services)
-1. [Activity 3: Workshop Structure and Overview Session](#activity-3-workshop-structure-and-overview)
+1. [Activity 3: Workshop Structure and Overview Session](#activity-3-workshop-structure-and-overview-session)
 1. [Activity 4: Configure Environment Variables](#activity-4-configure-environment-variables)
 1. [Activity 5: Compile and Run](#activity-5-compile-and-run)
 
@@ -36,7 +36,7 @@ Complete the following tasks in order to prepare your environment for this works
 
   #### Checking Azure OpenAI quota limits
 
-  For this sample to deploy successfully, there needs to be enough Azure OpenAI quota for the models used by this sample within your subscription. This sample deploys a new Azure OpenAI account with two models, **gpt-4o with 30K tokens** per minute and **text-3-large with 5k tokens** per minute. For more information on how to check your model quota and change it, see [Manage Azure OpenAI Service Quota](https://learn.microsoft.com/azure/ai-services/openai/how-to/quota)
+  For this sample to deploy successfully, there needs to be enough Azure OpenAI quota for the models used by this sample within your subscription. This sample deploys a new Azure OpenAI account with two models, **gpt-4o with 30K tokens** per minute and **text-3-embedding-small with 5k tokens** per minute. For more information on how to check your model quota and change it, see [Manage Azure OpenAI Service Quota](https://learn.microsoft.com/azure/ai-services/openai/how-to/quota)
 
   #### Azure Subscription Permission Requirements
 
@@ -52,11 +52,11 @@ You can choose from the following options to get started with the workshop.
 
 #### GitHub Codespaces
 
-You can run this sample app and workshop virtually by using GitHub Codespaces. The button will open a web-based VS Code instance in your browser:
+You can run this sample app and workshop virtually by using GitHub Codespaces (requires a GitHub account). The button will open a web-based VS Code instance in your browser:
 
 1. Open the template (this may take several minutes):
 
-   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/AzureCosmosDB/banking-multi-agent-workshop?devcontainer_path=.devcontainer%2Fpython%2Fdevcontainer.json)
+   [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/AzureCosmosDB/banking-multi-agent-workshop?branch=start&devcontainer_path=.devcontainer%2Fpython%2Fdevcontainer.json)
 
 2. Move on to the [Deployment](Module-00.md#deployment) section.
 
@@ -104,19 +104,13 @@ You can run this sample app and workshop virtually by using GitHub Codespaces. T
 
 ### Deployment
 
-1. From the terminal, switch to the `start` branch:
-
-   ```bash
-   git checkout start
-   ```
-
 1. Navigate to the correct folder:
 
    ```bash
    cd python/infra
    ```
 
-1. Log in to Azure using AZD.
+1. Log in to Azure using AZD. Follow the prompts to complete authentication.
 
    ```bash
    azd auth login
@@ -128,7 +122,7 @@ You can run this sample app and workshop virtually by using GitHub Codespaces. T
    azd up
    ```
 
-This step will take approximately 10-15 minutes. If you encounter an error during step, first rerun `azd up`. This tends to correct most errors.
+This step will take approximately 10-15 minutes.
 
 > [!IMPORTANT]
 > If you encounter any errors during the deployment, rerun `azd up` to continue the deployment from where it left off. This will not create duplicate resources, and tends to resolve most issues.
@@ -153,6 +147,7 @@ While the Azure Services are deploying we will have a presentation to cover on t
 
 ## Activity 4: Configure Environment Variables
 
+
 When you deploy this solution it automatically injects endpoints and configuration values for the required resources into a `.env` file at root (python) folder.
 
 But you will still need to install dependencies to run the solution locally.
@@ -171,7 +166,7 @@ But you will still need to install dependencies to run the solution locally.
    python -m venv .venv
    .venv\Scripts\Activate.ps1
    ```
-   
+
 3. Install the required dependencies for the project.
 
    ```shell
