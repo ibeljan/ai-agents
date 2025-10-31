@@ -67,8 +67,8 @@ You can run this sample app and workshop virtually by using GitHub Codespaces (r
 2. Clone the repository and checkout the start branch:
 
    ```bash
-   git clone https://github.com/AzureCosmosDB/banking-multi-agent-workshop/
-   cd banking-multi-agent-workshop
+   git clone https://github.com/ibeljan/ai-agents/
+   cd Labs\Python\13-MultiAgent-Langraph
    git fetch --all
    git checkout start
    ```
@@ -93,8 +93,8 @@ You can run this sample app and workshop virtually by using GitHub Codespaces (r
 2. Clone the repository and navigate to the folder:
 
    ```bash
-   git clone https://github.com/AzureCosmosDB/banking-multi-agent-workshop/
-   cd banking-multi-agent-workshop
+   git clone https://github.com/ibeljan/ai-agents/
+   cd Labs\Python\13-MultiAgent-Langraph
    git checkout start
    ```
 
