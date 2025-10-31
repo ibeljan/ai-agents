@@ -20,10 +20,6 @@ This is a sample that exposes turn-by-turn conversation with a multi-agent banki
    - Each sub-agent either:
      - Routes to another agent.
      - Calls a tool (functionality) - see files in `/app/tools` .
-1. `banking_agents_api_cli.py`: This is a simple CLI tool that consumes the FastAPI server endpoint. It will:
-   - Creates a sessionId using `POST /tenant/{tenantId}/user/{userId}/sessions` endpoint
-   - Sends messages to the agent using `POST /tenant/{tenantId}/user/{userId}/sessions/{sessionId}/completion` endpoint and prints the responses to the console
-   - Deletes session using `DELETE /tenant/{tenantId}/user/{userId}/sessions/{sessionId}` endpoint when user types "exit".
 1. `azure_open_ai.py`: This is a utility class that defines Azure OpenAI credentials and initialises Azure OpenAI API client
 1. `azure_cosmos_db.py`: This is a utility class that defines Azure Cosmos DB credentials, Database and Container name for storing conversation memory
 
@@ -51,7 +47,7 @@ Complete the following tasks in order to prepare your environment for this sampl
 
 ### GitHub Codespaces
 
-You can run this sample app using GitHub Codespaces (requires a GitHub account). The button will open a web-based VS Code instance in your browser:
+You can run this sample app using GitHub Codespaces (requires a GitHub account) or Locally. The button will open a web-based VS Code instance in your browser:
 
 1. Open the template (this may take several minutes):
 
@@ -66,8 +62,8 @@ You can run this sample app using GitHub Codespaces (requires a GitHub account).
 2. Clone the repository:
 
    ```bash
-   git clone https://github.com/AzureCosmosDB/banking-multi-agent-workshop/
-   cd banking-multi-agent-workshop
+   git clone https://github.com/ibeljan/ai-agents/
+   cd Labs\Python\13-MultiAgent-Langraph
    ```
 
 3. Open the repository in VS Code and select **Reopen in Container** when prompted. When asked to **Select a devcontainer.json file**, select the **Python Development Container**.
@@ -91,8 +87,8 @@ You can run this sample app using GitHub Codespaces (requires a GitHub account).
 2. Clone the repository and navigate to the folder:
 
    ```bash
-   git clone https://github.com/AzureCosmosDB/banking-multi-agent-workshop/
-   cd banking-multi-agent-workshop
+   git clone https://github.com/ibeljan/ai-agents/
+   cd Labs\Python\13-MultiAgent-Langraph
    ```
 
 3. Move on to the [Deployment](readme.md#deployment) section.
