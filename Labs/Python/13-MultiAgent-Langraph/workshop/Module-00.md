@@ -31,20 +31,10 @@ Complete the following tasks in order to prepare your environment for this works
 ### Prerequisites
 
 - Laptop or workstation with **administrator rights** (Alternatively you can run this workshop virtually in [GitHub Codespaces](https://github.com/features/codespaces))
-- Azure subscription with **owner rights**
-- Subscription access to Azure OpenAI service. Start here to [Request Access to Azure OpenAI Service](https://aka.ms/oaiapply). If you have access, see below for ensuring enough quota to deploy.
 
   #### Checking Azure OpenAI quota limits
 
   For this sample to deploy successfully, there needs to be enough Azure OpenAI quota for the models used by this sample within your subscription. This sample deploys a new Azure OpenAI account with two models, **gpt-4o with 30K tokens** per minute and **text-3-embedding-small with 5k tokens** per minute. For more information on how to check your model quota and change it, see [Manage Azure OpenAI Service Quota](https://learn.microsoft.com/azure/ai-services/openai/how-to/quota)
-
-  #### Azure Subscription Permission Requirements
-
-  This solution deploys a [user-assigned managed identity](https://learn.microsoft.com/entra/identity/managed-identities-azure-resources/overview) and defines then applies Azure Cosmos DB and Azure OpenAI RBAC permissions to this as well as your own Service Principal Id. You will need the following Azure RBAC roles assigned to your identity in your Azure subscription or [Subscription Owner](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles/privileged#owner) access which will give you both of the following.
-
-  - [Manged Identity Contributor](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles/identity#managed-identity-contributor)
-  - [Cosmos DB Operator](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles/databases#cosmos-db-operator)
-  - [Cognitive Services OpenAI User](https://learn.microsoft.com/azure/role-based-access-control/built-in-roles/ai-machine-learning#cognitive-services-openai-user)
 
 ### Get Started
 
@@ -59,25 +49,6 @@ You can run this sample app and workshop virtually by using GitHub Codespaces (r
    [![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/AzureCosmosDB/banking-multi-agent-workshop?branch=start&devcontainer_path=.devcontainer%2Fpython%2Fdevcontainer.json)
 
 2. Move on to the [Deployment](Module-00.md#deployment) section.
-
-#### Local Environment using VS Code Dev Containers
-
-1. Install [Docker Desktop](https://docs.docker.com/desktop/), and [VS Code](https://code.visualstudio.com/Download) along with the [Dev Containers extension](https://code.visualstudio.com/docs/devcontainers/tutorial#_install-the-extension) extension.
-
-2. Clone the repository and checkout the start branch:
-
-   ```bash
-   git clone https://github.com/ibeljan/ai-agents/
-   cd Labs\Python\13-MultiAgent-Langraph
-   git fetch --all
-   git checkout start
-   ```
-
-3. Open the repository in VS Code and select **Reopen in Container** when prompted. When asked to **Select a devcontainer.json file**, select the **Python Development Container**.
-
-4. Wait for the container to build and start. This is a one time operation and may take a few minutes.
-
-5. Move on to the [Deployment](Module-00.md#deployment) section.
 
 #### Local Environment without VS Code Dev Containers
 
@@ -100,55 +71,10 @@ You can run this sample app and workshop virtually by using GitHub Codespaces (r
 
 3. Move on to the [Deployment](Module-00.md#deployment) section.
 
-## Activity 2: Deploy Azure Services
 
-### Deployment
+## Activity : Configure Environment Variables
 
-1. Navigate to the correct folder:
-
-   ```bash
-   cd python/infra
-   ```
-
-1. Log in to Azure using AZD. Follow the prompts to complete authentication.
-
-   ```bash
-   azd auth login
-   ```
-
-1. Provision the Azure services and deploy the application.
-
-   ```bash
-   azd up
-   ```
-
-This step will take approximately 10-15 minutes.
-
-> [!IMPORTANT]
-> If you encounter any errors during the deployment, rerun `azd up` to continue the deployment from where it left off. This will not create duplicate resources, and tends to resolve most issues.
-
-1. When the resources are finally deployed, you will see a message in the terminal like below:
-
-```bash
-Deploying services (azd deploy)
-
-  (✓) Done: Deploying service ChatServiceWebApi
-  - Endpoint: https://ca-webapi-6xbkqp3ybtbuw.whitemoss-86b36485.eastus2.azurecontainerapps.io/
-
-Do you want to add some dummy data for testing? (yes/no): y
-```
-
-1. Press `y` to load the data for the workshop.
-
-
-## Activity 3: Workshop Structure and Overview Session
-
-While the Azure Services are deploying we will have a presentation to cover on the structure for this workshop for today as well as provide an introduction and overview of multi-agent sytems.
-
-## Activity 4: Configure Environment Variables
-
-
-When you deploy this solution it automatically injects endpoints and configuration values for the required resources into a `.env` file at root (python) folder.
+You will be provided with endpoints and configuration values for the required resources into a `.env` file at root (python) folder.
 
 But you will still need to install dependencies to run the solution locally.
 
@@ -224,27 +150,10 @@ Next, we will start building the agents that will be served by the API layer and
 
 Use the steps below to validate that the solution was deployed successfully.
 
-- [ ] All Azure resources are deployed successfully
 - [ ] You can compile the solution in CodeSpaces or locally
 - [ ] You can start the project and it runs without errors
 
 ### Common Issues and Troubleshooting
-
-1. Errors during azd deployment:
-
-- Service principal "not found" error.
-  - Rerun `azd up`
-- If you are running on Windows with Powershell, you may get:
-  - `"error executing step command 'deploy --all': getting target resource: resource not found: unable to find a resource tagged with 'azd-service-name: ChatServiceWebApi'"`
-  - This is likely because you have used Az CLI before, and have an old default resource group name cached that is different from the one specified during `azd up`.
-  - To resolve this:
-    - Delete `.azure` in the root folder and `.azd` folders in your home directory (`C:\Users\<user name>`).
-    - Start again, but first set resource group explicitly. Replace <environment name> in the below with the name you intend to set for your environment:
-      - `azd env set AZURE_RESOURCE_GROUP rg-<environment name>`
-      - Then enter <environment name> when prompted:
-        - `Enter a new environment name: <environment name>`
-      - Run `azd auth login` again
-      - Then run `azd up` again.
 
 1. Azure OpenAI deployment issues:
 
@@ -278,9 +187,3 @@ Proceed to [Creating Your First Agent](./Module-01.md)
 - [Azure OpenAI Service documentation](https://learn.microsoft.com/azure/cognitive-services/openai/)
 - [Azure Cosmos DB Vector Database](https://learn.microsoft.com/azure/cosmos-db/vector-database)
 
-<details>
-  <summary>If you prefer to run this locally on your machine, open this section and install these additional tools.</summary>
-
-<br>
-
-</details>
