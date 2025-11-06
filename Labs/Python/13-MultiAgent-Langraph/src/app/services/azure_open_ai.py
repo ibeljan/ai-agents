@@ -33,15 +33,18 @@ azure_ad_token = get_azure_ad_token()
 
 try:
     azure_openai_api_version = "2023-05-15"
+    azure_openai_api_key = os.getenv("AZURE_OPENAI_API_KEY")
     azure_deployment_name = model=os.getenv("AZURE_OPENAI_COMPLETIONSDEPLOYMENTID")
+    azure_openai_endpoint = os.getenv("AZURE_OPENAI_ENDPOINT")
     model = AzureChatOpenAI(
         azure_deployment=azure_deployment_name,
         api_version=azure_openai_api_version,
         temperature=0,
-        azure_ad_token=azure_ad_token
+        api_key=azure_openai_api_key,
+        azure_endpoint=azure_openai_endpoint
     )
     aoai_client = AzureOpenAI(
-        azure_ad_token=azure_ad_token,
+        api_key=azure_openai_api_key,
         api_version="2024-09-01-preview",
         azure_endpoint=os.getenv("AZURE_OPENAI_ENDPOINT")
     )

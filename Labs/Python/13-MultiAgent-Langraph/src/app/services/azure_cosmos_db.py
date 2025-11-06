@@ -14,7 +14,7 @@ logging.basicConfig(level=logging.ERROR)
 load_dotenv(override=False)
 # Azure Cosmos DB configuration
 COSMOS_DB_URL = os.getenv("COSMOSDB_ENDPOINT")
-COSMOS_DB_CONNECTION_STRING = os.getenv("COSMOSDB_CONNECTION_STRING")
+COSMOS_DB_CONNECTION_STRING = os.getenv("COSMOS_DB_CONNECTION_STRING")
 DATABASE_NAME = "MultiAgentBanking"
 
 cosmos_client = None
@@ -32,7 +32,7 @@ account_container = None
 try:
     #credential = DefaultAzureCredential()
     #cosmos_client = CosmosClient(COSMOS_DB_URL, credential=credential)
-    print("[DEBUG] Connected to Cosmos DB successfully using DefaultAzureCredential.")
+
     cosmos_client = CosmosClient.from_connection_string(COSMOS_DB_CONNECTION_STRING)
     print("[DEBUG] Connected to Cosmos DB successfully using connection string.")
 except Exception as conn_error:
