@@ -32,7 +32,7 @@ account_container = None
 try:
     #credential = DefaultAzureCredential()
     #cosmos_client = CosmosClient(COSMOS_DB_URL, credential=credential)
-    #print("[DEBUG] Connected to Cosmos DB successfully using DefaultAzureCredential.")
+    print("[DEBUG] Connected to Cosmos DB successfully using DefaultAzureCredential.")
     cosmos_client = CosmosClient.from_connection_string(COSMOS_DB_CONNECTION_STRING)
     print("[DEBUG] Connected to Cosmos DB successfully using connection string.")
 except Exception as conn_error:
