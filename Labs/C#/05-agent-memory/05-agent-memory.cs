@@ -187,8 +187,8 @@ namespace AgentMemoryDemo
             // Initialize search client for travel data
             var travelSearchClient = new SearchClient(new Uri(searchServiceEndpoint), travelIndexName, credential);
 
-            // Add sample hotel data
-            //await PopulateHotelDataAsync(travelSearchClient);
+            // Add sample hotel data (only if index is empty)
+            await PopulateHotelDataAsync(travelSearchClient);
 
             // Initialize memory store
             var memoryStore = new SimpleMemoryStore();
@@ -295,6 +295,7 @@ Always acknowledge what you found in their memories when responding.
 
         static async Task PopulateHotelDataAsync(SearchClient searchClient)
         {
+            // Try to upload documents - if they already exist, this will update them
             var sampleHotels = new List<Hotel>
             {
                 new Hotel
@@ -354,8 +355,16 @@ Always acknowledge what you found in their memories when responding.
                 }
             };
 
-            await searchClient.IndexDocumentsAsync(IndexDocumentsBatch.Upload(sampleHotels));
-            Console.WriteLine($"✅ Uploaded {sampleHotels.Count} hotels to search index");
+            try
+            {
+                await searchClient.IndexDocumentsAsync(IndexDocumentsBatch.Upload(sampleHotels));
+                Console.WriteLine($"✅ Uploaded/Updated {sampleHotels.Count} hotels to search index");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"⚠️  Could not upload documents: {ex.Message}");
+                Console.WriteLine("Continuing with existing index data...");
+            }
         }
     }
 }
