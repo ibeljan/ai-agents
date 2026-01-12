@@ -80,23 +80,19 @@ Ready to build enterprise-grade agents with powerful, type-safe tool capabilitie
 ### Prerequisites
 
 - [.NET 10 SDK](https://dotnet.microsoft.com/download/dotnet/10.0) or higher
-- [GitHub Models API access token](https://docs.github.com/github-models/github-models-at-scale/using-your-own-api-keys-in-github-models)
 
 ### Required Environment Variables
 
 ```bash
 # zsh/bash
-export GH_TOKEN=<your_github_token>
-export GH_ENDPOINT=https://models.github.ai/inference
-export GH_MODEL_ID=openai/gpt-5-mini
+export AZURE_AI_FOUNDRY_ENDPOINT="https://myresearchfoundry.openai.azure.com/"
+export AZURE_AI_FOUNDRY_MODEL=gpt-5-mini
 ```
 
 ```powershell
 # PowerShell
-$env:GH_TOKEN = "<your_github_token>"
-$env:GH_ENDPOINT = "https://models.github.ai/inference"
-$env:GH_MODEL_ID = "openai/gpt-5-mini"
-```
+$env:AZURE_AI_FOUNDRY_ENDPOINT = "https://myresearchfoundry.openai.azure.com/"
+$env:AZURE_AI_FOUNDRY_MODEL = "gpt-5-mini"
 
 ### Sample Code
 
