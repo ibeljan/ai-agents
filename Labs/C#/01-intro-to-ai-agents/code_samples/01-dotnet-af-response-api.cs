@@ -21,6 +21,7 @@ AzureOpenAIClient client = new AzureOpenAIClient(
     new Uri(ai_foundry_endpoint),
     new AzureCliCredential());
 
+
 #pragma warning disable OPENAI001 // Type is for evaluation purposes only and is subject to change or removal in future updates.
 var responseChatClient = client.GetResponsesClient(ai_foundry_model_id).AsIChatClient();
 #pragma warning restore OPENAI001
@@ -30,4 +31,4 @@ AIAgent agent = responseChatClient.CreateAIAgent(
     name: "ResponsesJoker");
 
 // Invoke the agent and output the text result.
-Console.WriteLine(await agent.RunAsync("Tell me a joke about a pirate."));
+Console.WriteLine(await agent.RunAsync("Tell me a joke about a ninja."));

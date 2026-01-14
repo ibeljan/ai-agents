@@ -33,4 +33,4 @@ var agentMetadata = await persistentAgentsClient.Administration.CreateAgentAsync
 AIAgent agent1 = await persistentAgentsClient.GetAIAgentAsync(agentMetadata.Value.Id);
 
 // Invoke the agent and output the text result.
-Console.WriteLine(await agent1.RunAsync("Tell me a joke about a pirate."));
+Console.WriteLine(await agent1.RunAsync("Tell me a joke about a ninja pirate."));

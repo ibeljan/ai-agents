@@ -17,10 +17,10 @@ using Microsoft.Agents.AI;
 using DotNetEnv;
 
 // Load environment variables
-Env.Load("../../../.env");
+Env.Load("/.env");
 
 // Get Azure AI Foundry configuration
-var azure_foundry_endpoint = Environment.GetEnvironmentVariable("AZURE_AI_PROJECT_ENDPOINT") ?? throw new InvalidOperationException("AZURE_AI_PROJECT_ENDPOINT is not set.");
+var azure_foundry_endpoint = Environment.GetEnvironmentVariable("AZURE_AI_PROJECT_ENDPOINT") ?? "https://myresearchfoundry.services.ai.azure.com/api/projects/embeddingsproject";
 var azure_foundry_model_id = Environment.GetEnvironmentVariable("AZURE_AI_MODEL_DEPLOYMENT_NAME") ?? "gpt-5-mini";
 
 Console.WriteLine($"Endpoint: {azure_foundry_endpoint}");
@@ -53,7 +53,7 @@ PersistentAgentsVectorStore fileStore =
 // Create RAG agent
 PersistentAgent agentModel = await persistentAgentsClient.Administration.CreateAgentAsync(
     azure_foundry_model_id,
-    name: "DotNetRAGAgent",
+    name: "DotNetRAGAgentTheNewOne",
     tools: [new FileSearchToolDefinition()],
     instructions: """
         You are an AI assistant designed to answer user questions using only the information retrieved from the provided document(s).
