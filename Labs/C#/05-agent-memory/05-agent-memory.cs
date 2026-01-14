@@ -13,7 +13,10 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
+using System.Text.Json;
+using System.Text.Json.Serialization;
 using Newtonsoft.Json;
+using Azure.Core.Serialization;
 using Azure;
 using Azure.Search.Documents;
 using Azure.Search.Documents.Indexes;
@@ -38,6 +41,11 @@ namespace AgentMemoryDemo
         public double rating { get; set; }
         public string[] tags { get; set; }
     }
+
+    [JsonSourceGenerationOptions(PropertyNamingPolicy = JsonKnownNamingPolicy.CamelCase)]
+    [JsonSerializable(typeof(Hotel))]
+    [JsonSerializable(typeof(List<Hotel>))]
+    internal partial class HotelJsonContext : JsonSerializerContext { }
 
     // Simple in-memory store for user preferences
     public class SimpleMemoryStore
@@ -179,13 +187,21 @@ namespace AgentMemoryDemo
 
             // Initialize Azure AI Search
             var credential = new AzureKeyCredential(searchApiKey);
-            var indexClient = new SearchIndexClient(new Uri(searchServiceEndpoint), credential);
+            var searchClientOptions = new SearchClientOptions
+            {
+                Serializer = new JsonObjectSerializer(new JsonSerializerOptions
+                {
+                    TypeInfoResolver = HotelJsonContext.Default
+                })
+            };
+
+            var indexClient = new SearchIndexClient(new Uri(searchServiceEndpoint), credential, searchClientOptions);
 
             // Create travel data index if it doesn't exist
             await CreateTravelIndexAsync(indexClient, travelIndexName);
 
             // Initialize search client for travel data
-            var travelSearchClient = new SearchClient(new Uri(searchServiceEndpoint), travelIndexName, credential);
+            var travelSearchClient = new SearchClient(new Uri(searchServiceEndpoint), travelIndexName, credential, searchClientOptions);
 
             // Add sample hotel data (only if index is empty)
             await PopulateHotelDataAsync(travelSearchClient);
