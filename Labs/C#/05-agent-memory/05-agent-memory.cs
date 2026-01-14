@@ -292,14 +292,32 @@ Always acknowledge what you found in their memories when responding.
                 new SearchableField("amenities"),
                 new SimpleField("price_per_night", SearchFieldDataType.Double),
                 new SimpleField("rating", SearchFieldDataType.Double),
-                new SearchableField("tags") { IsFilterable = true }
+                new SearchField("tags", SearchFieldDataType.Collection(SearchFieldDataType.String))
+                {
+                    IsSearchable = true,
+                    IsFilterable = true
+                }
             };
 
             var travelIndex = new SearchIndex(indexName, travelFields);
 
             try
             {
-                await indexClient.GetIndexAsync(indexName);
+                var existingIndexResponse = await indexClient.GetIndexAsync(indexName);
+                var existingIndex = existingIndexResponse.Value;
+
+                var existingTagsField = existingIndex.Fields.FirstOrDefault(f => f.Name == "tags");
+                var expectedTagsType = SearchFieldDataType.Collection(SearchFieldDataType.String);
+
+                if (existingTagsField?.Type != expectedTagsType)
+                {
+                    Console.WriteLine($"⚠️  Index '{indexName}' exists but has an incompatible schema. Recreating it...");
+                    await indexClient.DeleteIndexAsync(indexName);
+                    await indexClient.CreateIndexAsync(travelIndex);
+                    Console.WriteLine($"✅ Recreated index '{indexName}'");
+                    return;
+                }
+
                 Console.WriteLine($"✅ Index '{indexName}' already exists");
             }
             catch
